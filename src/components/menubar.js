@@ -1,25 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Modal from '@material-ui/core/Modal';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import {AccountCircle, Search} from '@material-ui/icons/';
+import styles from '../style/menubar.css';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
+// const styles = theme => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   grow: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginLeft: -12,
+//     marginRight: 20,
+//   },
+//   paper: {
+//     position: 'absolute',
+//     width: theme.spacing.unit * 50,
+//     backgroundColor: theme.palette.background.paper,
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing.unit * 4,
+//   },
+// });
 
 class MenuAppBar extends React.Component {
   state = {
@@ -36,18 +43,17 @@ class MenuAppBar extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant='h6' color='inherit' class={classes.grow}>
+            <Typography variant='h6' color='inherit' >
             </Typography>
-            <IconButton className={classes.menuButton} color='inherit' aria-label='search'>
+            <IconButton color='inherit' aria-label='search'>
               <Search onClick={this.handleSearchOpen}/>
             </IconButton>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton color="inherit" aria-label="Menu">
               <AccountCircle />
             </IconButton>
           </Toolbar>
@@ -56,15 +62,17 @@ class MenuAppBar extends React.Component {
           open={this.state.searchOpen}
           onClose={this.handleSearchClose}
         >
-          <Typography variant="h6" id="modal-title">
-            Text in a modal
-          </Typography>
-          <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <div>
+            <Typography variant="h6" id="modal-title">
+              Text in a modal
+            </Typography>
+            <Typography variant="subtitle1" id="simple-modal-description">
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+          </div>
         </Modal>
 
-            {/* {auth && (
+          {/* {auth && (
               <div>
                 <IconButton
               aria-owns={open ? 'menu-appbar' : null}
@@ -103,4 +111,4 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default (MenuAppBar);
