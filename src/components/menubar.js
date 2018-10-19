@@ -6,27 +6,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import {AccountCircle, Search} from '@material-ui/icons/';
-import styles from '../style/menubar.css';
+import { withStyles } from '@material-ui/core/styles';
 
-// const styles = theme => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20,
-//   },
-//   paper: {
-//     position: 'absolute',
-//     width: theme.spacing.unit * 50,
-//     backgroundColor: theme.palette.background.paper,
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing.unit * 4,
-//   },
-// });
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
+});
 
 class MenuAppBar extends React.Component {
   state = {
@@ -43,12 +43,14 @@ class MenuAppBar extends React.Component {
   };
 
   render() {
+    const {classes} = this.props;
 
     return (
-      <div>
+      <div className='classes.root'>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant='h6' color='inherit' >
+            <Typography className='classes.grow' variant='h6' color='inherit' >
+              Life
             </Typography>
             <IconButton color='inherit' aria-label='search'>
               <Search onClick={this.handleSearchOpen}/>
@@ -62,7 +64,7 @@ class MenuAppBar extends React.Component {
           open={this.state.searchOpen}
           onClose={this.handleSearchClose}
         >
-          <div>
+          <div className='classes.paper'>
             <Typography variant="h6" id="modal-title">
               Text in a modal
             </Typography>
@@ -72,34 +74,34 @@ class MenuAppBar extends React.Component {
           </div>
         </Modal>
 
-          {/* {auth && (
-              <div>
-                <IconButton
-              aria-owns={open ? 'menu-appbar' : null}
-              aria-haspopup="true"
-              onClick={this.handleMenu}
-              color="inherit"
-                >
-              <AccountCircle />
-                </IconButton>
-                <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-              }}
-              transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-              }}
-              open={open}
-              onClose={this.handleClose}
-                >
-              <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
+        {/* {auth && (
+          <div>
+          <IconButton
+          aria-owns={open ? 'menu-appbar' : null}
+          aria-haspopup="true"
+          onClick={this.handleMenu}
+          color="inherit"
+          >
+          <AccountCircle />
+          </IconButton>
+          <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+          }}
+          transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+          }}
+          open={open}
+          onClose={this.handleClose}
+          >
+          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+          <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          </Menu>
+          </div>
             )} */}
 
       </div>
@@ -111,4 +113,4 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default (MenuAppBar);
+export default withStyles(styles)(MenuAppBar);
