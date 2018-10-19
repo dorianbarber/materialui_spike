@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Modal from '@material-ui/core/Modal';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +22,6 @@ class MenuAppBar extends React.Component {
   };
 
   render() {
-
     return (
       <div className='root'>
         <AppBar position="static">
@@ -43,52 +41,11 @@ class MenuAppBar extends React.Component {
           onClose={this.handleSearchClose}
         >
           <div className='paper'>
-            <Typography variant="h6" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
           </div>
         </Modal>
-
-        {/* {auth && (
-          <div>
-          <IconButton
-          aria-owns={open ? 'menu-appbar' : null}
-          aria-haspopup="true"
-          onClick={this.handleMenu}
-          color="inherit"
-          >
-          <AccountCircle />
-          </IconButton>
-          <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-          }}
-          transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-          }}
-          open={open}
-          onClose={this.handleClose}
-          >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          </Menu>
-          </div>
-            )} */}
-
       </div>
     );
   }
 }
-
-MenuAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default MenuAppBar;
