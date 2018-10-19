@@ -6,27 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import {AccountCircle, Search} from '@material-ui/icons/';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-  },
-});
+import '../style/menubar.css';
 
 class MenuAppBar extends React.Component {
   state = {
@@ -43,14 +23,12 @@ class MenuAppBar extends React.Component {
   };
 
   render() {
-    const {classes} = this.props;
 
     return (
-      <div className='classes.root'>
+      <div className='root'>
         <AppBar position="static">
           <Toolbar>
-            <Typography className='classes.grow' variant='h6' color='inherit' >
-              Life
+            <Typography className='grow' variant='h6' color='inherit' >
             </Typography>
             <IconButton color='inherit' aria-label='search'>
               <Search onClick={this.handleSearchOpen}/>
@@ -64,7 +42,7 @@ class MenuAppBar extends React.Component {
           open={this.state.searchOpen}
           onClose={this.handleSearchClose}
         >
-          <div className='classes.paper'>
+          <div className='paper'>
             <Typography variant="h6" id="modal-title">
               Text in a modal
             </Typography>
@@ -113,4 +91,4 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default MenuAppBar;
